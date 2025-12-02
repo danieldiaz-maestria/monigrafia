@@ -1,7 +1,11 @@
-\chapter{RESULTADOS EXPERIMENTALES}
+\chapter{RESULTADOS EXPERIMENTALES - FASE 1: VALIDACIÓN DE ESTIMACIÓN DE DISTANCIA}
 \label{ch:resultados}
 
-Este capítulo presenta los resultados obtenidos durante la fase experimental de la investigación. Se exponen de manera sistemática los datos recolectados y procesados según la metodología descrita en el capítulo anterior, organizados por categorías que facilitan su interpretación posterior. Los resultados se presentan mediante tablas, gráficas y análisis estadísticos descriptivos, evitando en esta sección la interpretación profunda que se realizará en el capítulo siguiente.
+Este capítulo presenta los resultados obtenidos durante la Fase 1 de la investigación experimental, correspondiente a la validación del sistema de estimación de distancia UWB. Se exponen de manera sistemática los datos recolectados y procesados según la metodología descrita en el capítulo anterior, organizados por categorías que facilitan su interpretación posterior.
+
+Los resultados presentados en este capítulo se enfocan en caracterizar la exactitud de las mediciones de distancia punto a punto bajo diferentes condiciones de obstrucción corporal y propagación. La Fase 2, correspondiente al sistema completo de posicionamiento 2D con cuatro nodos ancla, será presentada en secciones subsiguientes una vez completada la experimentación.
+
+Los resultados se presentan mediante tablas, gráficas y análisis estadísticos descriptivos, evitando en esta sección la interpretación profunda que se realizará en el capítulo de análisis y discusión.
 
 \section{VERIFICACIÓN Y CALIBRACIÓN DEL SISTEMA}
 \label{sec:verificacion_sistema}
@@ -30,199 +34,115 @@ MAE (cm) & X.X & X.X & X.X & X.X \\
 
 Los resultados de calibración indican que el sistema UWB operando en la banda de 6.5 GHz alcanza una exactitud [COMPLETAR: "subdecimétrica/centimétrica"] en ausencia de obstrucciones, consistente con las especificaciones del fabricante y los valores reportados en la literatura para esta tecnología.
 
-\subsection{Estabilidad Temporal del Sistema}
-
-[COMPLETAR: Se evaluó la estabilidad temporal del sistema realizando mediciones repetidas en una posición fija durante X horas. La deriva temporal observada fue de X cm/hora, considerada aceptable para la duración de las sesiones experimentales.]
-
 
 \section{CARACTERIZACIÓN ANTROPOMÉTRICA DE LOS PARTICIPANTES}
 \label{sec:caracteristicas_participantes}
 
-El estudio incluyó la participación de [COMPLETAR número] voluntarios con las siguientes características antropométricas:
-
-[COMPLETAR CON DATOS REALES:
-\begin{table}[ht]
-\centering
-\caption{Características Antropométricas de los Participantes}
-\label{tab:participantes}
-\begin{tabular}{lccccc}
-\toprule
-\textbf{Participante} & \textbf{Género} & \textbf{Edad} & \textbf{Estatura (cm)} & \textbf{Peso (kg)} & \textbf{IMC} \\
-\midrule
-P1 & M/F & XX & XXX & XX & XX.X \\
-P2 & M/F & XX & XXX & XX & XX.X \\
-P3 & M/F & XX & XXX & XX & XX.X \\
-... & ... & ... & ... & ... & ... \\
-\bottomrule
-\end{tabular}
-\end{table}
-]
-
-Esta diversidad en características físicas permite evaluar si el efecto de la obstrucción corporal depende significativamente de la complexión del portador del dispositivo.
+Tal como se indicó en el paper de validación, este trabajo fue conducido como un caso de estudio fundacional con un único sujeto de prueba. Este enfoque permitió una caracterización detallada de los efectos de la ubicación del dispositivo y las condiciones de canal, minimizando la variabilidad inter-sujeto. Se reconoce que para garantizar la generalización de estos hallazgos para aplicaciones wearables robustas, futuros trabajos deberán enfocarse en un plan de pruebas exhaustivo involucrando múltiples sujetos con diversas condiciones corporales y características antropométricas.
 
 
 \section{ANÁLISIS DEL ERROR DE DISTANCIA POR UBICACIÓN CORPORAL}
 \label{sec:error_por_ubicacion}
 
-\subsection{Dispositivo en el Pecho (Frente)}
+En esta sección se presentan los resultados de la Fase 1, correspondientes a las mediciones de distancia entre un nodo móvil (ubicado en diferentes partes del cuerpo) y un nodo fijo de referencia. Estas mediciones constituyen la base fundamental para el sistema de posicionamiento 2D, ya que la exactitud de la localización depende directamente de la calidad de las estimaciones de distancia hacia cada nodo ancla.
 
-[COMPLETAR: Presentar resultados para el dispositivo ubicado en el pecho]
+Se evaluaron siete ubicaciones corporales del dispositivo móvil: cabeza (head), cadera (hip), mano (hand), muñeca (wrist), pecho (chest), rodilla (knee) y tobillo (ankle), bajo dos condiciones de propagación (LOS y NLOS) en dos escenarios diferentes (exterior e interior). A continuación se presentan los resultados organizados por ubicación corporal.
 
-\begin{figure}[ht]
-    \centering
-    % \includegraphics[width=0.8\textwidth]{imagenes/error_pecho_vs_orientacion.pdf}
-    \caption{Error de Distancia vs. Ángulo de Orientación del Cuerpo - Dispositivo en Pecho}
-    \label{fig:error_pecho_orientacion}
-\end{figure}
+\subsection{Dispositivo en el Pecho (Chest)}
 
-[COMPLETAR:
+El pecho (chest) representa una de las ubicaciones más críticas para la evaluación de la obstrucción corporal, ya que el torso constituye la mayor masa de tejido que puede obstruir la señal directa entre el nodo móvil y el nodo fijo.
+
 \begin{table}[ht]
 \centering
 \caption{Estadísticas de Error de Distancia - Dispositivo en Pecho}
 \label{tab:error_pecho}
-\begin{tabular}{lcccc}
+\begin{tabular}{lccc}
 \toprule
-\textbf{Condición} & \textbf{ME (cm)} & \textbf{Desv. Est. (cm)} & \textbf{RMSE (cm)} & \textbf{Percentil 95 (cm)} \\
+\textbf{Escenario} & \textbf{Condición} & \textbf{MAE (m)} & \textbf{Desv. Est. (m)} \\
 \midrule
-LOS (0°-45°) & X.X & X.X & X.X & X.X \\
-NLOS (45°-135°) & X.X & X.X & X.X & X.X \\
-NLOS (135°-225°) & X.X & X.X & X.X & X.X \\
-NLOS (225°-315°) & X.X & X.X & X.X & X.X \\
-LOS (315°-360°) & X.X & X.X & X.X & X.X \\
+Exterior & LOS & 0.0364 & 0.0309 \\
+Exterior & NLOS & 0.5932 & -- \\
+Interior & LOS & 0.0266 & -- \\
+Interior & NLOS & 1.0480 & -- \\
 \bottomrule
 \end{tabular}
 \end{table}
-]
 
-\subsection{Dispositivo en la Espalda}
+Los resultados muestran que el pecho alcanza la exactitud más alta en condiciones LOS, particularmente en el escenario interior con un MAE de solo 2.66 cm. Sin embargo, experimenta la degradación más severa al pasar a condiciones NLOS en el escenario exterior, con un factor de degradación de 16.3×, el más alto registrado entre todas las configuraciones evaluadas. Esta degradación extrema se debe a que el torso bloquea completamente la línea de vista directa, forzando al sistema a estimar la distancia basándose en señales difractadas alrededor del cuerpo o reflejadas por el entorno.
 
-[COMPLETAR: Similar estructura que la sección anterior, con gráficas y tablas correspondientes]
+\subsection{Otras Ubicaciones Corporales Evaluadas}
 
-\subsection{Dispositivo en la Cadera}
+Además del pecho, se evaluaron seis ubicaciones adicionales. La Tabla \ref{tab:resumen_todas_ubicaciones} presenta un resumen comparativo de los resultados obtenidos.
 
-[COMPLETAR]
+\begin{table}[ht]
+\centering
+\caption{Resumen de MAE por Ubicación Corporal y Condición - Fase 1}
+\label{tab:resumen_todas_ubicaciones}
+\begin{tabular}{lcccc}
+\toprule
+\multirow{2}{*}{\textbf{Ubicación}} & \multicolumn{2}{c}{\textbf{Exterior}} & \multicolumn{2}{c}{\textbf{Interior}} \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5}
+ & \textbf{LOS (m)} & \textbf{NLOS (m)} & \textbf{LOS (m)} & \textbf{NLOS (m)} \\
+\midrule
+Cabeza (Head) & 0.0464 & 0.0610 & 0.1750 & 0.3110 \\
+Cadera (Hip) & 0.0817 & -- & -- & -- \\
+Mano (Hand) & 0.3672 & 0.6100 & 0.9020 & 0.2471 \\
+Muñeca (Wrist) & 0.0720 & -- & 1.0599 & 0.1777 \\
+Pecho (Chest) & 0.0364 & 0.5932 & 0.0266 & 1.0480 \\
+Rodilla (Knee) & 0.1513 & 2.2312 & 0.1270 & 0.5000 \\
+Tobillo (Ankle) & 0.3274 & -- & -- & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\subsection{Dispositivo en la Muñeca}
+\textbf{Hallazgos principales:}
 
-[COMPLETAR]
+\begin{itemize}
+\item \textbf{Cabeza:} Muestra comportamiento consistente y robusto, con degradación mínima entre LOS y NLOS (factor 1.3× en exterior). La forma curva de la cabeza favorece la difracción de señales UWB.
 
-\subsection{Dispositivo en el Tobillo}
+\item \textbf{Rodilla:} Presenta el peor caso registrado con MAE de 2.23 m en condición NLOS exterior (error máximo de 5.48 m), con factor de degradación de 14.7× y alta variabilidad ($\sigma$ = 1.80 m).
 
-[COMPLETAR]
-
-\subsection{Comparación Entre Ubicaciones Corporales}
-
-[COMPLETAR: Gráfica comparativa mostrando el error medio para cada ubicación corporal en función del ángulo de orientación del cuerpo]
-
-\begin{figure}[ht]
-    \centering
-    % \includegraphics[width=1.0\textwidth]{imagenes/comparacion_ubicaciones.pdf}
-    \caption{Comparación del Error de Distancia Entre Diferentes Ubicaciones Corporales}
-    \label{fig:comparacion_ubicaciones}
-\end{figure}
+\item \textbf{Mano y Muñeca en Interior:} Exhiben el fenómeno contraintuitivo donde el desempeño en NLOS es superior al de LOS. La mano mejora de 0.902 m (LOS) a 0.247 m (NLOS) con factor 0.36×, y la muñeca de 1.060 m (LOS) a 0.178 m (NLOS) con factor 0.60×. Esto sugiere que las reflexiones especulares de las paredes del corredor actúan como guía de ondas, proveyendo caminos de propagación más favorables que la señal directa obstruida.
+\end{itemize}
 
 
-\section{ANÁLISIS ESTADÍSTICO DE LAS DISTRIBUCIONES DE ERROR}
+\section{ANÁLISIS ESTADÍSTICO GLOBAL - FASE 1}
 \label{sec:distribuciones_error}
 
-\subsection{Ajuste de Distribuciones Teóricas}
+\subsection{Métricas Globales del Sistema}
 
-Para cada combinación de ubicación corporal y condición de propagación (LOS/NLOS), se ajustaron distribuciones de probabilidad teóricas a los errores observados.
+Considerando las 28 configuraciones evaluadas (7 ubicaciones × 2 condiciones × 2 escenarios), el análisis global del sistema de estimación de distancia arroja las siguientes métricas:
 
-[COMPLETAR:
-\begin{table}[ht]
-\centering
-\caption{Mejores Ajustes de Distribución para Cada Condición}
-\label{tab:distribuciones}
-\begin{tabular}{lcc}
-\toprule
-\textbf{Condición} & \textbf{Distribución} & \textbf{Parámetros} \\
-\midrule
-Pecho - LOS & Normal & $\mu = X.X$ cm, $\sigma = X.X$ cm \\
-Pecho - NLOS & Log-normal & $\mu = X.X$, $\sigma = X.X$ \\
-Espalda - LOS & Normal & $\mu = X.X$ cm, $\sigma = X.X$ cm \\
-... & ... & ... \\
-\bottomrule
-\end{tabular}
-\end{table}
-]
+\begin{itemize}
+\item \textbf{MAE Global:} 0.3944 m
+\item \textbf{RMSE Global:} 0.6690 m  
+\item \textbf{Percentil 95:} 1.1424 m
+\end{itemize}
 
-\subsection{Análisis de Varianza (ANOVA)}
+El percentil 95 indica que el 95\% de todas las mediciones presentan errores inferiores a 1.14 m, proporcionando una medida de la variabilidad extrema del sistema. Se observó una tendencia sistemática a sobreestimar las distancias, fenómeno atribuible a efectos de multitrayecto y tiempos de procesamiento de señal en los dispositivos UWB.
 
-Se realizó un análisis de varianza multifactorial para determinar qué variables experimentales tienen efecto estadísticamente significativo sobre el error de distancia.
+\subsection{Distribución Probabilística de Errores}
 
-[COMPLETAR:
-\begin{table}[ht]
-\centering
-\caption{Resultados del ANOVA Multifactorial}
-\label{tab:anova}
-\begin{tabular}{lccccc}
-\toprule
-\textbf{Factor} & \textbf{Suma Cuad.} & \textbf{GL} & \textbf{Media Cuad.} & \textbf{F} & \textbf{p-valor} \\
-\midrule
-Ubicación corporal & XXX.X & X & XXX.X & XX.X & < 0.001 \\
-Orientación del cuerpo & XXX.X & X & XXX.X & XX.X & < 0.001 \\
-Distancia & XXX.X & X & XXX.X & XX.X & < 0.001 \\
-Ubicación × Orientación & XXX.X & X & XXX.X & XX.X & < 0.001 \\
-Residuos & XXX.X & XXX & XX.X & & \\
-\bottomrule
-\end{tabular}
-\end{table}
-]
-
-Los resultados del ANOVA indican que [COMPLETAR: todos los factores principales tienen efecto significativo (p < 0.001), así como la interacción entre ubicación corporal y ángulo de orientación, sugiriendo que el patrón de variación del error con la orientación depende de dónde se porte el dispositivo].
+La distribución probabilística de errores mostró asimetría positiva con cola extendida hacia errores mayores, indicando naturaleza no gaussiana en configuraciones específicas, particularmente bajo condiciones NLOS severas. Este comportamiento sugiere que modelos de error tradicionales basados en distribuciones gaussianas pueden ser inadecuados para caracterizar sistemas UWB con obstrucción corporal.
 
 
-\section{CORRELACIÓN CON VARIABLES ANTROPOMÉTRICAS}
-\label{sec:correlacion_antropometria}
 
-Se analizó la correlación entre el error de distancia y las características antropométricas de los participantes.
-
-[COMPLETAR:
-\begin{table}[ht]
-\centering
-\caption{Coeficientes de Correlación de Pearson}
-\label{tab:correlacion}
-\begin{tabular}{lcccc}
-\toprule
-\textbf{Variable} & \textbf{LOS} & \textbf{NLOS} & \textbf{p-valor} \\
-\midrule
-Estatura & 0.XX & 0.XX & X.XXX \\
-Peso & 0.XX & 0.XX & X.XXX \\
-IMC & 0.XX & 0.XX & X.XXX \\
-\bottomrule
-\end{tabular}
-\end{table}
-]
-
-
-\section{DESEMPEÑO DEL SISTEMA DE POSICIONAMIENTO COMPLETO}
+\section{FASE 2: SISTEMA DE POSICIONAMIENTO 2D COMPLETO}
 \label{sec:desempeno_posicionamiento}
 
-A partir de las mediciones de distancia hacia los cuatro nodos ancla, se calcularon las posiciones 2D del nodo móvil mediante trilateración por mínimos cuadrados.
+\textbf{Nota:} La Fase 2 de esta investigación corresponde a la implementación y evaluación del sistema completo de posicionamiento 2D utilizando cuatro nodos ancla en configuración geométrica. Esta fase integrará las mediciones de distancia hacia múltiples anclas para estimar posiciones 2D del nodo móvil mediante algoritmos de trilateración.
 
-\subsection{Error de Posición 2D}
+Los resultados de la Fase 1 presentados en este capítulo establecen la línea base de desempeño del sistema de estimación de distancia bajo diferentes condiciones de obstrucción corporal. La Fase 2 utilizará estos hallazgos para:
 
-[COMPLETAR:
-\begin{table}[ht]
-\centering
-\caption{Error de Posición 2D por Ubicación Corporal}
-\label{tab:error_posicion}
-\begin{tabular}{lccccc}
-\toprule
-\textbf{Ubicación} & \textbf{ME (cm)} & \textbf{Mediana (cm)} & \textbf{RMSE (cm)} & \textbf{CEP (cm)} & \textbf{95\% (cm)} \\
-\midrule
-Pecho & XX.X & XX.X & XX.X & XX.X & XX.X \\
-Espalda & XX.X & XX.X & XX.X & XX.X & XX.X \\
-Cadera & XX.X & XX.X & XX.X & XX.X & XX.X \\
-Muñeca & XX.X & XX.X & XX.X & XX.X & XX.X \\
-Tobillo & XX.X & XX.X & XX.X & XX.X & XX.X \\
-\bottomrule
-\end{tabular}
-\end{table}
-]
+\begin{itemize}
+\item Implementar el sistema completo de localización con cuatro nodos ancla en el escenario experimental.
+\item Evaluar el error de posicionamiento 2D (distancia euclidiana entre posición estimada y real).
+\item Analizar métricas como CEP (Error Circular Probable), exactitud al 95\%, y RMSE de posición.
+\item Comparar algoritmos de trilateración (mínimos cuadrados ponderados, Filtro de Kalman).
+\item Generar mapas de calor de error de posición en el área del escenario experimental.
+\end{itemize}
 
-\subsection{Mapas de Calor de Error de Posición}
+Los resultados de la Fase 2 serán presentados en sección subsiguiente una vez completada la experimentación correspondiente.
 
 [COMPLETAR: Incluir figuras mostrando mapas de calor del error de posición en el área del escenario experimental para cada ubicación corporal]
 

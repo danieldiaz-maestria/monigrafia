@@ -10,9 +10,7 @@ En este capítulo se describe detalladamente la metodología empleada para lleva
 
 \subsubsection{Selección de Dispositivos}
 
-[COMPLETAR: Especificar el modelo exacto de dispositivos UWB utilizados, fabricante, chipset (ej. DW3000, DW1000), características técnicas principales]
-
-Para este estudio se han seleccionado dispositivos UWB basados en [ESPECIFICAR CHIPSET], configurados para operar en la banda de frecuencia central de 6.5 GHz. La elección de estos dispositivos se fundamenta en:
+Para este estudio se han seleccionado módulos de desarrollo Qorvo DWM1001, que integran un transceptor UWB DW1000, un microcontrolador Nordic Semiconductor nRF52832 y un sensor de movimiento. Los módulos operan con el firmware PANS (Positioning and Networking Stack) de Qorvo, el cual implementa la técnica TWR para estimación de distancia. Estos dispositivos están configurados para operar en la banda de frecuencia central de 6.5 GHz. La elección de estos dispositivos se fundamenta en:
 
 \begin{itemize}
 \item Capacidad de operar en la banda de 6.5 GHz con el ancho de banda necesario para lograr resolución temporal adecuada.
@@ -27,12 +25,14 @@ Para este estudio se han seleccionado dispositivos UWB basados en [ESPECIFICAR C
 Los dispositivos UWB se configuran con los siguientes parámetros operacionales:
 
 \begin{itemize}
-\item \textbf{Frecuencia central:} 6.5 GHz (Canal [ESPECIFICAR])
-\item \textbf{Ancho de banda:} [ESPECIFICAR] MHz
-\item \textbf{Tasa de repetición de pulsos:} [ESPECIFICAR] MHz
-\item \textbf{Longitud del preámbulo:} [ESPECIFICAR] símbolos
-\item \textbf{Potencia de transmisión:} [ESPECIFICAR] dBm
-\item \textbf{Tasa de actualización de mediciones:} [ESPECIFICAR] Hz
+\item \textbf{Frecuencia central:} 6489.6 MHz (Canal 5)
+\item \textbf{Ancho de banda:} 499.2 MHz
+\item \textbf{Tasa de transmisión de datos:} 6.8 Mbps
+\item \textbf{Frecuencia de repetición de pulsos (PRF):} 64 MHz
+\item \textbf{Longitud del preámbulo:} 128 símbolos
+\item \textbf{Código del preámbulo (TX/RX):} 10
+\item \textbf{Potencia de transmisión:} -17 dBm
+\item \textbf{Sensibilidad del receptor:} -93 dBm
 \end{itemize}
 
 Estos parámetros se seleccionan para optimizar el compromiso entre exactitud de medición, alcance efectivo y consumo energético, siguiendo las recomendaciones del fabricante y las mejores prácticas identificadas en la revisión de literatura.
@@ -50,10 +50,10 @@ Estos parámetros se seleccionan para optimizar el compromiso entre exactitud de
 El experimento se desarrolla en [ESPECIFICAR UBICACIÓN EXACTA, ej. "el Salón 305 del Edificio de Ingeniería Electrónica y Telecomunicaciones de la Universidad del Cauca"]. Este espacio ha sido seleccionado por presentar características representativas de escenarios de interiores típicos donde se implementan sistemas de posicionamiento:
 
 \begin{itemize}
-\item \textbf{Dimensiones:} [ESPECIFICAR largo × ancho × alto en metros]
-\item \textbf{Materiales constructivos:} Paredes de [ESPECIFICAR], piso de [ESPECIFICAR], techo de [ESPECIFICAR]
-\item \textbf{Mobiliario:} [DESCRIBIR mobiliario principal presente: mesas, sillas, estanterías, etc.]
-\item \textbf{Fuentes de interferencia:} [IDENTIFICAR posibles fuentes de interferencia electromagnética: redes WiFi activas, equipos electrónicos, etc.]
+\item \textbf{Dimensiones:} 20 m de largo × 3 m de ancho (escenario tipo corredor)
+\item \textbf{Materiales constructivos:} Paredes de concreto, piso de baldosa cerámica, techo de placa de concreto
+\item \textbf{Mobiliario:} Corredor típico de edificio universitario con mobiliario mínimo
+\item \textbf{Fuentes de interferencia:} Redes WiFi institucionales activas en bandas de 2.4 GHz y 5 GHz, equipos electrónicos de oficinas adyacentes
 \end{itemize}
 
 \subsection{Disposición de Nodos Ancla}
@@ -67,7 +67,7 @@ Se despliegan cuatro nodos ancla fijos en configuración [ESPECIFICAR: rectangul
 \item \textbf{Ancla 4:} $(x_4, y_4)$ = [ESPECIFICAR coordenadas en metros]
 \end{itemize}
 
-Los nodos ancla se montan a una altura de [ESPECIFICAR] metros sobre el nivel del piso, utilizando [ESPECIFICAR método de montaje: trípodes, soportes de pared, etc.], asegurando estabilidad mecánica durante todo el período experimental.
+Los nodos ancla se montan a una altura de 1.5 metros sobre el nivel del piso, utilizando trípodes, asegurando estabilidad mecánica durante todo el período experimental.
 
 La geometría de despliegue se diseña para minimizar la dilución de precisión geométrica (GDOP) en el área de interés, maximizando así la exactitud de localización en condiciones de LOS.
 
@@ -106,11 +106,11 @@ Para cada ubicación se registra la altura exacta sobre el nivel del piso y la o
 
 \subsubsection{Mediciones Estáticas}
 
-En una primera fase, se realizan mediciones estáticas donde el participante permanece inmóvil en posiciones específicas dentro del escenario. Se define una malla de puntos de referencia con [ESPECIFICAR espaciamiento, ej. "separación de 1 metro en ambas direcciones"], cubriendo el área de cobertura de los nodos ancla.
+En una primera fase, se realizan mediciones estáticas donde el participante permanece inmóvil en posiciones específicas dentro del escenario. Se define una malla de puntos de referencia con separación de 1 metro, cubriendo un rango de distancias desde 1 m hasta 13 m entre el nodo móvil y el nodo fijo.
 
-En cada posición de la malla, el participante adopta [ESPECIFICAR número] orientaciones diferentes, típicamente separadas por [ESPECIFICAR, ej. "45 grados"], completando así un ciclo de 360 grados. Esto permite evaluar el efecto del ángulo de orientación del cuerpo de manera sistemática.
+En cada posición de la malla, el participante adopta 2 orientaciones diferentes (LOS y NLOS), permitiendo evaluar el efecto de la obstrucción corporal de manera sistemática. En la condición LOS, el participante se orienta de manera que la parte del cuerpo que porta el dispositivo mantiene visibilidad directa con el nodo de referencia. En la condición NLOS, el participante se orienta de espaldas al nodo fijo.
 
-Para cada combinación de posición-orientación-ubicación del dispositivo, se registran [ESPECIFICAR número] mediciones de ToF hacia cada uno de los cuatro nodos ancla, totalizando [CALCULAR] mediciones individuales por posición.
+Para cada combinación de posición-orientación-ubicación del dispositivo, se registran 250 mediciones de distancia estimada, asegurando un análisis estadístico robusto.
 
 \subsubsection{Mediciones Dinámicas}
 
@@ -307,6 +307,10 @@ El protocolo experimental ha sido [ESPECIFICAR: "aprobado por el Comité de Éti
 
 \section{RESUMEN DEL CAPÍTULO}
 
-Este capítulo ha presentado el diseño metodológico completo de la investigación experimental. Se ha detallado la selección y configuración del hardware UWB, el diseño del escenario experimental, el protocolo sistemático de recolección de datos que garantiza la cobertura exhaustiva de las condiciones de interés, y las técnicas estadísticas y algorítmicas que se emplearán para el análisis de los datos.
+Este capítulo ha presentado el diseño metodológico completo de la investigación experimental, estructurada en dos fases complementarias:
 
-La metodología propuesta, fundamentada en el Modelo en V, asegura que cada aspecto del sistema experimental sea verificado y validado antes de la recolección de datos definitiva, minimizando el riesgo de errores sistemáticos y maximizando la calidad y reproducibilidad de los resultados. El siguiente capítulo presentará los resultados obtenidos al aplicar esta metodología.
+\textbf{Fase 1 - Validación del Sistema de Estimación de Distancia:} Evaluación exhaustiva de la exactitud en la medición de distancias UWB bajo diferentes ubicaciones corporales del dispositivo móvil y condiciones de propagación (LOS/NLOS) en dos escenarios representativos. Esta fase establece la línea base de desempeño del sistema y caracteriza el impacto de la obstrucción corporal sobre las mediciones de distancia.
+
+\textbf{Fase 2 - Evaluación del Sistema de Posicionamiento 2D Completo:} Implementación y evaluación del sistema completo de localización indoor utilizando cuatro nodos ancla en configuración geométrica optimizada. Esta fase integrará las mediciones de distancia hacia múltiples anclas para estimar posiciones 2D mediante algoritmos de trilateración y filtrado, evaluando el error de posicionamiento resultante bajo las mismas condiciones experimentales de la Fase 1.
+
+La metodología propuesta, fundamentada en el Modelo en V, asegura que cada aspecto del sistema experimental sea verificado y validado antes de la recolección de datos definitiva, minimizando el riesgo de errores sistemáticos y maximizando la calidad y reproducibilidad de los resultados. El siguiente capítulo presentará los resultados obtenidos en la Fase 1 de validación.

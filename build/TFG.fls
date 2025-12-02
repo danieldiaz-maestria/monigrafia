@@ -661,7 +661,6 @@ INPUT .\imagenes\ModelV.pdf
 INPUT .\imagenes\ModelV.pdf
 INPUT .\imagenes\ModelV.pdf
 INPUT .\imagenes\ModelV.pdf
-INPUT C:\Users\trull\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx8.tfm
 INPUT .\capitulos\cap_diseno_metodologico.tex
 INPUT .\capitulos\cap_diseno_metodologico.tex
 OUTPUT e:\Universidad\Trabajo Daniel\Universidad\DocumentoMonografía\Monografía\build\capitulos\cap_diseno_metodologico.aux
@@ -743,8 +742,6 @@ INPUT C:\Users\trull\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\tcr
 INPUT C:\Users\trull\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\tcrm1200.pk
 INPUT C:\Users\trull\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx12.pfb
 INPUT C:\Users\trull\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx12.pfb
-INPUT C:\Users\trull\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx8.pfb
-INPUT C:\Users\trull\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx8.pfb
 INPUT C:\Users\trull\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmcsc10.pfb
 INPUT C:\Users\trull\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmcsc10.pfb
 INPUT C:\Users\trull\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmex10.pfb
