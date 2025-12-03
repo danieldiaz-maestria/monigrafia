@@ -70,31 +70,146 @@ En esta sección se presentan los resultados de la Fase 1, correspondientes a la
 
 Se evaluaron siete ubicaciones corporales del dispositivo móvil: cabeza, cadera, mano, muñeca, pecho, rodilla y tobillo, bajo dos condiciones de propagación (LOS y NLOS) en dos escenarios diferentes (exterior e interior). A continuación se presentan los resultados organizados por ubicación corporal.
 
-\subsection{Dispositivo en el Pecho (Chest)}
+\subsection{Dispositivo en el Pecho}
 
-El pecho (chest) representa una de las ubicaciones más críticas para la evaluación de la obstrucción corporal, ya que el torso constituye la mayor masa de tejido que puede obstruir la señal directa entre el nodo móvil y el nodo fijo.
+El pecho representa una de las ubicaciones más críticas para la evaluación de la obstrucción corporal, ya que el torso constituye la mayor masa de tejido que puede obstruir la señal directa entre el nodo móvil y el nodo fijo.
 
 \begin{table}[ht]
 \centering
 \caption{Estadísticas de Error de Distancia - Dispositivo en Pecho}
 \label{tab:error_pecho}
-\begin{tabular}{lccc}
+\begin{tabular}{lcc}
 \toprule
-\textbf{Escenario} & \textbf{Condición} & \textbf{MAE (m)} & \textbf{Desv. Est. (m)} \\
+\textbf{Escenario} & \textbf{Condición} & \textbf{MAE (cm)} \\
 \midrule
-Exterior & LOS & 0.0364 & 0.0309 \\
-Exterior & NLOS & 0.5932 & -- \\
-Interior & LOS & 0.0266 & -- \\
-Interior & NLOS & 1.0480 & -- \\
+Exterior & LOS & 4.62 \\
+Exterior & NLOS & 63.69 \\
+Interior & LOS & 13.74 \\
+Interior & NLOS & 83.98 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Los resultados muestran que el pecho alcanza la exactitud más alta en condiciones LOS, particularmente en el escenario interior con un MAE de solo 2.66 cm. Sin embargo, experimenta la degradación más severa al pasar a condiciones NLOS en el escenario exterior, con un factor de degradación de 16.3×, el más alto registrado entre todas las configuraciones evaluadas. Esta degradación extrema se debe a que el torso bloquea completamente la línea de vista directa, forzando al sistema a estimar la distancia basándose en señales difractadas alrededor del cuerpo o reflejadas por el entorno.
+Los resultados muestran que el pecho alcanza valores de MAE de 4.62 cm en condiciones LOS exteriores, siendo esta la mejor configuración registrada en todo el estudio. Sin embargo, experimenta una degradación significativa al pasar a condiciones NLOS, alcanzando 63.69 cm en exterior y 83.98 cm en interior (factor de degradación de 13.8× y 6.1× respectivamente). Esta degradación se debe a que el torso bloquea completamente la línea de vista directa, forzando al sistema a estimar la distancia basándose en señales difractadas alrededor del cuerpo o reflejadas por el entorno.
 
-\subsection{Otras Ubicaciones Corporales Evaluadas}
+\subsection{Dispositivo en la Cabeza}
 
-Además del pecho, se evaluaron seis ubicaciones adicionales. La Tabla \ref{tab:resumen_todas_ubicaciones} presenta un resumen comparativo de los resultados obtenidos.
+La cabeza representa una ubicación estratégica debido a su geometría curva que favorece la difracción de señales UWB. Los resultados demuestran el comportamiento más consistente y predecible entre todas las ubicaciones evaluadas.
+
+\begin{table}[ht]
+\centering
+\caption{Estadísticas de Error de Distancia - Dispositivo en Cabeza}
+\label{tab:error_cabeza}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Escenario} & \textbf{Condición} & \textbf{MAE (cm)} & \textbf{Desv. Est. (cm)} & \textbf{Error Máx. (cm)} \\
+\midrule
+Exterior & LOS & 4.87 & 3.72 & 15 \\
+Exterior & NLOS & 32.05 & 10.16 & 53 \\
+Interior & LOS & 10.43 & 9.21 & 48 \\
+Interior & NLOS & 18.66 & 11.20 & 64 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+La cabeza alcanza MAE de 4.87 cm en exterior LOS, comparable al pecho. Presenta degradación moderada en NLOS exterior (factor 6.6×) y excelente desempeño en interior con factor de degradación de solo 1.8× entre LOS y NLOS. La geometría esférica del cráneo permite que las señales se difracten efectivamente alrededor de la obstrucción, manteniendo la exactitud incluso en condiciones NLOS.
+
+\subsection{Dispositivo en la Cadera}
+
+La cadera exhibe el comportamiento más variable del estudio, con excelente desempeño en LOS pero degradación extrema en NLOS.
+
+\begin{table}[ht]
+\centering
+\caption{Estadísticas de Error de Distancia - Dispositivo en Cadera}
+\label{tab:error_cadera}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Escenario} & \textbf{Condición} & \textbf{MAE (cm)} & \textbf{Desv. Est. (cm)} & \textbf{Error Máx. (cm)} \\
+\midrule
+Exterior & LOS & 8.31 & 5.34 & 25 \\
+Exterior & NLOS & 94.78 & 52.46 & 189 \\
+Interior & LOS & 7.19 & 7.86 & 37 \\
+Interior & NLOS & 97.76 & 71.00 & 290 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+La cadera presenta los mayores errores máximos registrados: 189 cm (exterior NLOS) y 290 cm (interior NLOS), con factores de degradación de 11.4× y 13.6× respectivamente. Esta ubicación sufre obstrucción severa por la pelvis y el torso, generando caminos de propagación altamente variables con elevada dispersión estadística.
+
+\subsection{Dispositivo en la Rodilla}
+
+La rodilla muestra errores consistentemente elevados en todas las configuraciones, con alta variabilidad especialmente en condiciones NLOS.
+
+\begin{table}[ht]
+\centering
+\caption{Estadísticas de Error de Distancia - Dispositivo en Rodilla}
+\label{tab:error_rodilla}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Escenario} & \textbf{Condición} & \textbf{MAE (cm)} & \textbf{Desv. Est. (cm)} & \textbf{Error Máx. (cm)} \\
+\midrule
+Exterior & LOS & 14.99 & 10.59 & 46 \\
+Exterior & NLOS & 55.54 & 36.11 & 131 \\
+Interior & LOS & 12.04 & 8.43 & 35 \\
+Interior & NLOS & 49.55 & 37.68 & 181 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+La rodilla presenta MAE superiores a 12 cm incluso en LOS, y alcanza 55.54 cm en exterior NLOS (factor 3.7×) y 49.55 cm en interior NLOS (factor 4.1×). La proximidad al suelo y la obstrucción por las extremidades inferiores generan multitrayecto complejo y atenuación significativa.
+
+\subsection{Dispositivo en el Tobillo}
+
+El tobillo exhibe el comportamiento más atípico, con errores elevados incluso en LOS y un fenómeno contraintuitivo de mejora en NLOS interior.
+
+\begin{table}[ht]
+\centering
+\caption{Estadísticas de Error de Distancia - Dispositivo en Tobillo}
+\label{tab:error_tobillo}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Escenario} & \textbf{Condición} & \textbf{MAE (cm)} & \textbf{Desv. Est. (cm)} & \textbf{Error Máx. (cm)} \\
+\midrule
+Exterior & LOS & 29.87 & 20.86 & 105 \\
+Exterior & NLOS & 38.86 & 19.44 & 85 \\
+Interior & LOS & 41.50 & 28.67 & 147 \\
+Interior & NLOS & 29.96 & 15.89 & 81 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+El tobillo presenta MAE superiores a 29 cm en todas las configuraciones. Contraintuitivamente, en interior NLOS (29.96 cm) supera el desempeño de LOS (41.50 cm) con factor de mejora de 1.4×. Este fenómeno sugiere que las reflexiones del piso y paredes en el corredor compensan parcialmente la atenuación por obstrucción corporal.
+
+\subsection{Dispositivo en Mano y Muñeca}
+
+Mano y muñeca mantienen desempeño moderado y estable en la mayoría de configuraciones.
+
+\begin{table}[ht]
+\centering
+\caption{Estadísticas de Error de Distancia - Dispositivo en Mano y Muñeca}
+\label{tab:error_mano_muneca}
+\begin{tabular}{lllccc}
+\toprule
+\textbf{Ubicación} & \textbf{Escenario} & \textbf{Condición} & \textbf{MAE (cm)} & \textbf{Desv. Est. (cm)} & \textbf{Error Máx. (cm)} \\
+\midrule
+\multirow{4}{*}{Mano} & Exterior & LOS & 8.98 & 6.39 & 32 \\
+& Exterior & NLOS & 41.60 & 12.14 & 73 \\
+& Interior & LOS & 9.47 & 7.74 & 35 \\
+& Interior & NLOS & 26.01 & 23.92 & 156 \\
+\midrule
+\multirow{4}{*}{Muñeca} & Exterior & LOS & 7.78 & 5.99 & 32 \\
+& Exterior & NLOS & 24.07 & 7.71 & 45 \\
+& Interior & LOS & 6.42 & 4.09 & 19 \\
+& Interior & NLOS & 22.00 & 13.21 & 81 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Mano y muñeca presentan MAE entre 6.42 cm y 9.47 cm en LOS, con degradación moderada en NLOS (factores entre 2.9× y 4.6×). La muñeca muestra mejor consistencia que la mano, con menor variabilidad y errores máximos más bajos. Ambas ubicaciones se benefician de la movilidad natural de las extremidades superiores que reduce la obstrucción persistente.
+
+\subsection{Resumen Comparativo General}
+
+La Tabla \ref{tab:resumen_todas_ubicaciones} consolida los resultados de todas las ubicaciones evaluadas.
 
 \begin{table}[ht]
 \centering
@@ -104,15 +219,15 @@ Además del pecho, se evaluaron seis ubicaciones adicionales. La Tabla \ref{tab:
 \toprule
 \multirow{2}{*}{\textbf{Ubicación}} & \multicolumn{2}{c}{\textbf{Exterior}} & \multicolumn{2}{c}{\textbf{Interior}} \\
 \cmidrule(lr){2-3} \cmidrule(lr){4-5}
- & \textbf{LOS (m)} & \textbf{NLOS (m)} & \textbf{LOS (m)} & \textbf{NLOS (m)} \\
+ & \textbf{LOS (cm)} & \textbf{NLOS (cm)} & \textbf{LOS (cm)} & \textbf{NLOS (cm)} \\
 \midrule
-Cabeza (Head) & 0.0464 & 0.0610 & 0.1750 & 0.3110 \\
-Cadera (Hip) & 0.0817 & -- & -- & -- \\
-Mano (Hand) & 0.3672 & 0.6100 & 0.9020 & 0.2471 \\
-Muñeca (Wrist) & 0.0720 & -- & 1.0599 & 0.1777 \\
-Pecho (Chest) & 0.0364 & 0.5932 & 0.0266 & 1.0480 \\
-Rodilla (Knee) & 0.1513 & 2.2312 & 0.1270 & 0.5000 \\
-Tobillo (Ankle) & 0.3274 & -- & -- & -- \\
+Cabeza & 4.87 & 32.43 & 8.91 & 18.16 \\
+Cadera & 8.31 & 89.99 & 7.22 & 95.11 \\
+Mano & 9.28 & 42.17 & 9.09 & 26.01 \\
+Muñeca & 7.78 & 24.21 & 6.42 & 22.00 \\
+Pecho & 4.62 & 63.69 & 13.74 & 83.98 \\
+Rodilla & 14.99 & 51.36 & 12.04 & 49.52 \\
+Tobillo & 29.81 & 38.45 & 41.48 & 29.96 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -120,11 +235,15 @@ Tobillo (Ankle) & 0.3274 & -- & -- & -- \\
 \textbf{Hallazgos principales:}
 
 \begin{itemize}
-\item \textbf{Cabeza:} Muestra comportamiento consistente y robusto, con degradación mínima entre LOS y NLOS (factor 1.3× en exterior). La forma curva de la cabeza favorece la difracción de señales UWB.
+\item \textbf{Cabeza:} Muestra el comportamiento más consistente entre todas las ubicaciones evaluadas. En exteriores presenta degradación moderada entre LOS (4.87 cm) y NLOS (32.43 cm) con factor 6.7×. En interiores mantiene valores relativamente bajos: 8.91 cm (LOS) y 18.16 cm (NLOS) con factor 2.0×. La forma curva de la cabeza favorece la difracción de señales UWB alrededor del cráneo.
 
-\item \textbf{Rodilla:} Presenta el peor caso registrado con MAE de 2.23 m en condición NLOS exterior (error máximo de 5.48 m), con factor de degradación de 14.7× y alta variabilidad ($\sigma$ = 1.80 m).
+\item \textbf{Cadera:} Exhibe el desempeño más variable del estudio. Alcanza valores excelentes en LOS (8.31 cm exterior, 7.22 cm interior), pero experimenta la degradación más severa en NLOS con MAE de 89.99 cm (exterior) y 95.11 cm (interior), representando factores de degradación de 10.8× y 13.2× respectivamente.
 
-\item \textbf{Mano y Muñeca en Interior:} Exhiben el fenómeno contraintuitivo donde el desempeño en NLOS es superior al de LOS. La mano mejora de 0.902 m (LOS) a 0.247 m (NLOS) con factor 0.36×, y la muñeca de 1.060 m (LOS) a 0.178 m (NLOS) con factor 0.60×. Esto sugiere que las reflexiones especulares de las paredes del corredor actúan como guía de ondas, proveyendo caminos de propagación más favorables que la señal directa obstruida.
+\item \textbf{Rodilla:} Presenta errores consistentemente elevados en todas las configuraciones. Los valores en LOS son moderados (14.99 cm exterior, 12.04 cm interior), pero en NLOS alcanza 51.36 cm (exterior) y 49.52 cm (interior), con factores de degradación de 3.4× y 4.1×.
+
+\item \textbf{Tobillo:} Muestra el comportamiento más atípico del estudio. Presenta MAE elevados incluso en LOS (29.81 cm exterior, 41.48 cm interior). Contraintuitivamente, el escenario NLOS exhibe mejor desempeño en interior (29.96 cm) que en LOS, con factor de mejora de 1.4×. En exterior NLOS alcanza 38.45 cm.
+
+\item \textbf{Mano y Muñeca:} Mantienen desempeño moderado y consistente. La mano registra 9.28 cm (exterior LOS) y 9.09 cm (interior LOS), degradándose a 42.17 cm y 26.01 cm en NLOS respectivamente. La muñeca presenta valores similares: 7.78 cm (exterior LOS), 6.42 cm (interior LOS), degradándose a 24.21 cm y 22.00 cm en NLOS. Ambas ubicaciones muestran factores de degradación entre 2.9× y 4.5×.
 \end{itemize}
 
 
